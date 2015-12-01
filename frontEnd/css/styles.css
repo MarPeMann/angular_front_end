@@ -1,0 +1,35 @@
+/*p{
+    color:greenyellow;
+    font-size: 32px;
+    
+    
+}*/
+
+.omaluokka{
+    
+    background-color: aquamarine;
+
+
+}
+
+.fancy{
+    color: green;
+    border: 2px;
+    background-color: aquamarine;
+    border-radius: 8px;
+}
+
+#jokuid{
+    margin: 100px;
+}
+
+.login_container{
+    width: 580px;
+    margin: 9px auto;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: cadetblue;
+    padding: 10px;
+
+
+}
