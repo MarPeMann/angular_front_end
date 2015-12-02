@@ -7,5 +7,9 @@ main_module.config(function($routeProvider){
     $routeProvider.when('/',{
         templateUrl:'partial_login.html',
         controller:'controllerLogin'
+    })
+    .when('/people',{
+    	templateUrl:'persons_partial.html',
+    	controller:'personController'
     });
 });
