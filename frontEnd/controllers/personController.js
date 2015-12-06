@@ -5,5 +5,10 @@ main_module.controller('personController', function($scope, $http){
 		$scope.persons = persons;
 	});
 
+	$scope.addPerson = function(){
+		var temp = $scope.person;
+			$http.post('http://localhost:3000/persons', temp);
+	}
+
 
 });
