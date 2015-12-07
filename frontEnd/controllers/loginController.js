@@ -22,6 +22,7 @@ main_module.controller('controllerLogin',function($scope, loginFactory, $locatio
             
         }, function error(data){
             $('.error').text("Wrong username or password");
+            $scope.isLoginError = true;
                          
         });
     }
@@ -30,6 +31,21 @@ main_module.controller('controllerLogin',function($scope, loginFactory, $locatio
         
         // Onko flash viestiä mahdollista tehdä, jos reg ei onnisu
         console.log("Register...");
+        var temp = {
+            username:$scope.user,
+            password:$scope.pass
+        }
+
+        var waitPromise = loginFactory.startRegister(temp);
+
+        waitPromise.then(function(data){
+            console.log('Registered successfully');
+            $location.path('/profile');
+
+        }, function error(data){
+            $('.error').text("Username is already in use");
+
+        });
     }
 });
 

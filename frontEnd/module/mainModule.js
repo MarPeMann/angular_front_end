@@ -11,5 +11,8 @@ main_module.config(function($routeProvider){
     .when('/people',{
     	templateUrl:'persons_partial.html',
     	controller:'personController'
+    })
+    .when('/profile',{
+    	templateUrl:'partial_profileview.html'
     });
 });

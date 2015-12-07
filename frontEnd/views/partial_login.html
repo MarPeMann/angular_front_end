@@ -1,4 +1,10 @@
-<p class="error"></p>
+<!--<p class="error" ng-show="isLoginError"></p> -->
+
+<div class="alert alert-danger alert-dismissible" role="alert" ng-show="isLoginError">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong class="error"></strong>
+</div>
+
 <form>
     <input type="text" placeholder="username" ng-model="user"><br/>
     <input type="password" placeholder="password" ng-model="pass"><br/>
