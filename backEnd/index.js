@@ -9,6 +9,7 @@ var user = require('./modules/user');
 
 // ====== Middlewares =======
 //bodyparser middleware parses json object from http post request
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded()); 
 app.use(function(req,res,next){
     

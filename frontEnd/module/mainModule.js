@@ -1,5 +1,5 @@
 // params: ('module_name', ['dependency'])
-var main_module = angular.module('main_module', ['ngRoute']);
+var main_module = angular.module('main_module', ['ngRoute', 'ngResource']);
 
 // Basic configuration and the router for the app
 main_module.config(function($routeProvider){

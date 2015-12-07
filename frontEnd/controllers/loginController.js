@@ -12,7 +12,17 @@ main_module.controller('controllerLogin',function($scope, loginFactory){
             password:$scope.pass
         }
         
-        loginFactory.startLogin(temp);
+        var waitPromise = loginFactory.startLogin(temp);
+        
+        // wait response from server
+        waitPromise.then(function(data){
+            // called when success response from server is received
+            console.log('success');
+            
+        }, function error(data){
+            $('.error').text("Wrong username or password");
+                         
+        });
     }
     
     $scope.registerClicked = function(){
