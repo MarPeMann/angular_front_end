@@ -1,5 +1,5 @@
 // The $scope object is the glue between the view and the controller and the means to pass data between //them
-main_module.controller('controllerLogin',function($scope, loginFactory){
+main_module.controller('controllerLogin',function($scope, loginFactory, $location){
     
     //var user = $scope.user;
     //$scope.pass = "joo";
@@ -18,6 +18,7 @@ main_module.controller('controllerLogin',function($scope, loginFactory){
         waitPromise.then(function(data){
             // called when success response from server is received
             console.log('success');
+            $location.path('/people'); //redirect to...
             
         }, function error(data){
             $('.error').text("Wrong username or password");
@@ -26,6 +27,10 @@ main_module.controller('controllerLogin',function($scope, loginFactory){
     }
     
     $scope.registerClicked = function(){
+        
+        // Onko flash viestiä mahdollista tehdä, jos reg ei onnisu
         console.log("Register...");
     }
 });
+
+
