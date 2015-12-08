@@ -36,17 +36,21 @@ main_module.controller('controllerLogin',function($scope, loginFactory, $locatio
             password:$scope.pass
         }
 
-        var waitPromise = loginFactory.startRegister(temp);
+        var response = loginFactory.startRegister(temp);
 
-        waitPromise.then(function(data){
-            console.log('Registered successfully');
-            $location.path('/profile');
-
-        }, function error(data){
-            $('.error').text("Username is already in use");
-
-        });
+        response.then(success, error)
     }
 });
+
+function success(data){
+ 
+    alert("user registered");
+}
+
+function error(data){
+    
+    alert("Username already in use");
+
+}
 
 

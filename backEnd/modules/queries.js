@@ -105,9 +105,9 @@ exports.registerFriend = function(req,res){
     var friend =  new db.Friends(req.body);
     friend.save(function(err){
         if(err){
-            res.send({status:err.message});
+            res.status(500).send({status:err.message});
         }else{
-            res.send({status:"ok"});
+            res.status(200).send({status:"ok"});
         }
         
     });
@@ -120,12 +120,13 @@ exports.loginFriend = function(req,res){
     
     var searchObject = {username:req.body.username, password:req.body.password}
     
-    db.Friends.find(searchObject, function(err,data){
+    db.Friends.findOne(searchObject, function(err,data){
         
         if(err){
             res.send(502,{status:err.message});
         }else{
-            if(data.length>0){
+            if(data/*.length>0*/){
+                req.session.kayttaja = data.username;
                 res.send(200,{status:"OK"});
             }else{
                 res.send(401,{status:"Wrong username or password"});
@@ -142,13 +143,19 @@ exports.loginFriend = function(req,res){
 
 exports.getFriendsByUsername = function(req,res){
     
-    var usern = req.params.username.split("=")[1];
-    db.Friends.find({username:usern}).
+    //var usern = req.params.username.split("=")[1];
+    db.Friends.findOne({username:req.session.kayttaja}).
         populate('friends').exec(function(err,data){
+
+            if(data){
+                res.send(data.friends);
+            }else{
+                res.redirect('/');
+
+            }
             
-            console.log(err);
-            console.log(data[0]);
-            res.send(data[0].friends);
+   
+            
         
         });
 }

@@ -7,8 +7,18 @@ var person = require('./modules/person');
 var app = express();
 var user = require('./modules/user');
 
+// For creating a secret key value for session cookie
+var uuid = require('uuid');
+// For creating a session object for client
+var session = require('express-session');
+
 // ====== Middlewares =======
 //bodyparser middleware parses json object from http post request
+app.use(session({
+    secret:uuid.v1(),
+    cookie:{maxAge:600000}
+}));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded()); 
 app.use(function(req,res,next){
@@ -16,6 +26,8 @@ app.use(function(req,res,next){
     console.log(req.method);
     console.log(req.path);
     console.log(__dirname);
+    console.log(req.body);
+    console.log(req.session);
     console.log(database.Person);
     //send request forward to stack
     next();
@@ -41,6 +53,11 @@ app.get('/', function(req, res){
     res.sendfile("views/index.html");
 });
 */
+
+app.get('/logout',function(req, res){
+    req.session.destroy();
+    res.redirect('/');
+})
 
 
 app.get('/persons', function(req, res){

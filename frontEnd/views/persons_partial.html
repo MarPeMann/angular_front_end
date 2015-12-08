@@ -1,4 +1,5 @@
 <div>
+	<a href="/logout">Logout</a>
 	<p>
 		
 	
@@ -10,8 +11,8 @@
 		        <th>Age</th>
 		      </tr>
 		    </thead>
-		    <tbody ng-repeat="person in persons">
-		      <tr>
+		    <tbody>
+		      <tr ng-repeat="person in friendData">
 		        <td>{{person.name}}</td>
 		        <td>{{person.address}}</td>
 		        <td>{{person.age}}</td>
