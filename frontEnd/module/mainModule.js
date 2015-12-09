@@ -14,5 +14,18 @@ main_module.config(function($routeProvider){
     })
     .when('/profile',{
     	templateUrl:'partial_profileview.html'
+    })
+    .when('/insert',{
+        templateUrl:'partial_insert.html',
+        controller: 'insertController'
+    })
+    .when('/delete',{
+        templateUrl:'partial_delete.html',
+        controller: 'deleteController'
+    })
+    .when('/edit',{
+        templateUrl:'partial_edit.html',
+        controller: 'editController'
     });
+
 });

@@ -23,6 +23,28 @@ main_module.controller('personController', function($scope, friendDataFactory){
 		var temp = $scope.person;
 			$http.post('http://localhost:3000/persons', temp);
 	}*/
+/*    $scope.rowClicked = function(id){
+      console.log(id);
+    }*/
+
+    $scope.rowClicked = function(id){
+      console.log("Deletessä ollaan");
+
+      console.log(id);
+
+    var temp = id;
+
+    var response = friendDataFactory.deleteData(temp);
+
+    response.then(function(data){
+      console.log("deleting...")
+
+    }, function error(data){
+      console.log("An error occured");
+
+    });
+
+  }
 
 
 });

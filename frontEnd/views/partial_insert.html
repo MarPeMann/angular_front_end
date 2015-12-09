@@ -1,0 +1,12 @@
+	<a href="/logout">Logout</a>
+	<a href="/#/insert">Add contacts</a>
+	<a href="/#/delete">Remove contacts</a>
+	<a href="/#/edit">Edit contacts</a>
+
+	<h1>Add new contact</h1>
+	<form>
+		<input type="text" ng-model="person.name" placeholder="name">
+		<input type="text" ng-model="person.address" placeholder="address">
+		<input type="text" ng-model="person.age" placeholder="age">
+		<input type="button" value="Add" ng-click="addFriend()" >
+	</form>
