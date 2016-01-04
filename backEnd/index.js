@@ -57,7 +57,17 @@ app.get('/', function(req, res){
 app.get('/logout',function(req, res){
     req.session.destroy();
     res.redirect('/');
-})
+});
+
+app.get('/isLogged', function(req,res){
+    if(req.session.kayttaja){
+        res.status(200).send([{status:'ok'}]);
+    }else{
+
+        res.status(401).send([{status:'Unauthorized'}]);
+
+    }
+});
 
 
 app.get('/persons', function(req, res){
