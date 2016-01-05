@@ -1,4 +1,6 @@
 var db = require('./database');
+var jwt = require('jsonwebtoken');
+var server = require('../index');
 
 exports.getAllPersons = function(req,res){
     
@@ -127,7 +129,9 @@ exports.loginFriend = function(req,res){
         }else{
             if(data/*.length>0*/){
                 req.session.kayttaja = data.username;
-                res.send(200,{status:"OK"});
+                //Create token
+                var token =  jwt.sign(data, server.secret, {expiresIn:'2h'});
+                res.send(200,{status:"OK", secret:token});
             }else{
                 res.send(401,{status:"Wrong username or password"});
             }

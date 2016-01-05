@@ -16,7 +16,9 @@ main_module.controller('controllerLogin',function($scope, loginFactory, $locatio
         
         // wait response from server
         waitPromise.then(function(data){
-            // called when success response from server is received
+            
+            console.log(data.secret);
+            sessionStorage['token'] = data.secret;
             console.log('success');
             $location.path('/people'); //redirect to...
             

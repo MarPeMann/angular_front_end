@@ -5,7 +5,9 @@ var main_module = angular.module('main_module', ['ngRoute', 'ngResource']);
 function loginRequired($q, $resource, $location){
 
     var deferred = $q.defer();
-    $resource('/isLogged').query().$promise.then(function success(){
+    $resource('/isLogged').query().$promise.then(
+
+        function success(){
 
         deferred.resolve();
         return deferred;
