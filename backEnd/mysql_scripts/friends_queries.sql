@@ -10,7 +10,7 @@ select * from user where pass="testi" order by username;
 
 select * from friend;
 
-select user.username, friend.friend_name, friend.friend_address,friend.friend_age age from
+select user.username, friend.name, friend.address,friend.age from
 user inner join friend on user.user_id=friend.user_id;
 
 CALL getAllUsers();
